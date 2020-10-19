@@ -17,6 +17,7 @@ from . import local_settings
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'base/static/base')
+print('static root', STATIC_ROOT)
 
 STATIC_URL = '/static/'
 # STATICFILES_DIRS = (
@@ -27,12 +28,16 @@ STATIC_URL = '/static/'
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = local_settings.SECRET_KEY
+# SECRET_KEY = local_settings.SECRET_KEY
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = local_settings.DEBUG
+# DEBUG = local_settings.DEBUG
+DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = local_settings.ALLOWED_HOSTS
+# ALLOWED_HOSTS = local_settings.ALLOWED_HOSTS
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
+
 
 
 # Application definition
@@ -150,10 +155,14 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 # Securing session cookies
 
-CSRF_COOKIE_SECURE = local_settings.CSRF_COOKIE_SECURE
-SESSION_COOKIE_SECURE = local_settings.SESSION_COOKIE_SECURE
+# CSRF_COOKIE_SECURE = local_settings.CSRF_COOKIE_SECURE
+# SESSION_COOKIE_SECURE = local_settings.SESSION_COOKIE_SECURE
+CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE')
+SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE')
 
 # Demo user settings
 
-DEMO_USER_USERNAME = local_settings.DEMO_USER_USERNAME
-DEMO_USER_PASSWORD = local_settings.DEMO_USER_PASSWORD
+# DEMO_USER_USERNAME = local_settings.DEMO_USER_USERNAME
+# DEMO_USER_PASSWORD = local_settings.DEMO_USER_PASSWORD
+DEMO_USER_USERNAME = os.environ.get('DEMO_USER_USERNAME')
+DEMO_USER_PASSWORD = os.environ.get('DEMO_USER_PASSWORD')
