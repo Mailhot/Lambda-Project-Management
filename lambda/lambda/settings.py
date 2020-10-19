@@ -36,7 +36,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG')
 
 # ALLOWED_HOSTS = local_settings.ALLOWED_HOSTS
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
+if os.environ.get('ALLOWED_HOSTS') == None:
+    ALLOWED_HOSTS = []
+else:
+    # Not working at the moment, only for testing.
+    ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
 
 
 
