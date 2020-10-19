@@ -40,7 +40,7 @@ if os.environ.get('ALLOWED_HOSTS') == None:
     ALLOWED_HOSTS = []
 else:
     # Not working at the moment, only for testing.
-    ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
+    ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
 
 
 
