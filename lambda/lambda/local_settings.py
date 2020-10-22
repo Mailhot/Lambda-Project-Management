@@ -35,7 +35,7 @@ SESSION_COOKIE_SECURE = False
 # db_name = os.environ.get('db_username') + '$' + os.environ.get('db_name')
 # db_lambda_username = os.environ.get('db_lambda_username')
 # db_password = os.environ.get('db_password')
-# db_hostname = os.environ.get('DATABASE_URL')
+db_hostname = os.environ.get('db_hostname')
 # db_port = os.environ.get('db_port')
 
 if os.environ.get('DATABASE_URL', '') != "":
@@ -47,7 +47,8 @@ if os.environ.get('DATABASE_URL', '') != "":
                 'USER': r.username,
                 'PORT': r.port,
                 'PASSWORD': r.password,
-                'HOST': r.hostname,
+                # 'HOST': r.hostname,
+                'HOST': os.environ.get('db_hostname'), # this is for vpn
                 'OPTIONS': {'ssl': 'require'},
             }
     }
