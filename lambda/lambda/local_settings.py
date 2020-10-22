@@ -48,7 +48,7 @@ if os.environ.get('DATABASE_URL', '') != "":
                 'PORT': r.port,
                 'PASSWORD': r.password,
                 'HOST': r.hostname,
-                'OPTIONS': {'sslmode': 'require'},
+                'OPTIONS': {'ssl': 'require'},
             }
     }
 
