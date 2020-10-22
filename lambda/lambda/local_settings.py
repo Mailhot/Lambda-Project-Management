@@ -2,7 +2,7 @@
 not be committed or shared with others.
 """
 import os
-from urlib.parse import urlparse
+from urllib.parse import urlparse
 # this is a test only setting file
 
 # To set your local settings, edit the values below and change the name of this
