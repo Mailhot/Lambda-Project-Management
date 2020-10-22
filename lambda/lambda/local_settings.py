@@ -1,6 +1,7 @@
 """Settings for the local instance of our django app.  WARNING: this file should
 not be committed or shared with others.
 """
+
 import os
 from urllib.parse import urlparse
 # this is a test only setting file
