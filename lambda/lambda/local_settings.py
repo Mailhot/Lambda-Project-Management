@@ -31,22 +31,36 @@ SESSION_COOKIE_SECURE = False
 
 # Setting up you database. Bellow are settings for a MySQL batabase. If you
 # leave these commented out your site will use a sqlite database.
-db_name = os.environ.get('db_username') + '$' + os.environ.get('db_name')
-db_lambda_username = os.environ.get('db_lambda_username')
-db_password = os.environ.get('db_password')
-db_hostname = os.environ.get('DATABASE_URL')
-db_port = os.environ.get('db_port')
+# db_name = os.environ.get('db_username') + '$' + os.environ.get('db_name')
+# db_lambda_username = os.environ.get('db_lambda_username')
+# db_password = os.environ.get('db_password')
+# db_hostname = os.environ.get('DATABASE_URL')
+# db_port = os.environ.get('db_port')
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': db_name,
-        'USER': db_lambda_username,
-        'PORT': db_port,
-        'PASSWORD': db_password,
-        'HOST': db_hostname,
+if os.environ.get('DATABASE_URL', '') != "":
+    r = urlparse(os.environ.get('DATABASE_URL', ''))
+    DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': os.path.relpath(r.path, "/"),
+                'USER': r.username,
+                'PORT': r.port,
+                'PASSWORD': r.password,
+                'HOST': r.hostname,
+                'OPTIONS': {'sslmode': 'require'},
+            }
     }
-}
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': db_name,
+#         'USER': db_lambda_username,
+#         'PORT': db_port,
+#         'PASSWORD': db_password,
+#         'HOST': db_hostname,
+#     }
+# }
 
 # Settings for a demo user that people can use without registering for their own
 # account.  This user should be set up using an admin account and MUST have the
