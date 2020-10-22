@@ -1,7 +1,7 @@
 """Settings for the local instance of our django app.  WARNING: this file should
 not be committed or shared with others.
 """
-
+import os
 # this is a test only setting file
 
 # To set your local settings, edit the values below and change the name of this
@@ -29,17 +29,22 @@ ALLOWED_HOSTS = []
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
 
-# # Setting up you database. Bellow are settings for a MySQL batabase. If you
-# # leave these commented out your site will use a sqlite database.
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': '<your_username>$<your_database_name>',
-#         'USER': '<your_username>',
-#         'PASSWORD': '<your_mysql_password>',
-#         'HOST': '<your_mysql_hostname>',
-#     }
-# }
+# Setting up you database. Bellow are settings for a MySQL batabase. If you
+# leave these commented out your site will use a sqlite database.
+db_name = os.environ.get('db_username') + '$' + os.environ.get('db_name')
+db_lambda_username = os.environ.get('db_lambda_username')
+db_password = os.environ.get('db_password')
+db_hostname = os.environ.get('db_hostname')
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': db_name,
+        'USER': db_lambda_username,
+        'PASSWORD': db_password,
+        'HOST': db_hostname,
+    }
+}
 
 # Settings for a demo user that people can use without registering for their own
 # account.  This user should be set up using an admin account and MUST have the
