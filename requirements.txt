@@ -5,6 +5,7 @@ black==19.10b0
 click==7.1.2
 Django==3.0.8
 django-crispy-forms==1.9.1
+mysqlclient==2.0.1
 pathspec==0.8.0
 pycodestyle==2.6.0
 pytz==2020.1
