@@ -34,13 +34,15 @@ SESSION_COOKIE_SECURE = False
 db_name = os.environ.get('db_username') + '$' + os.environ.get('db_name')
 db_lambda_username = os.environ.get('db_lambda_username')
 db_password = os.environ.get('db_password')
-db_hostname = os.environ.get('DATABASE_URL')
+db_hostname = os.environ.get('db_hostname')
+db_port = os.environ.get('db_port')
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': db_name,
         'USER': db_lambda_username,
+        'PORT': db_port,
         'PASSWORD': db_password,
         'HOST': db_hostname,
     }
