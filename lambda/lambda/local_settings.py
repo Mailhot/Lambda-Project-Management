@@ -18,7 +18,7 @@ SECRET_KEY = "add a secret key here"
 
 # Debug should be set to False for production environments, True for dev
 # environments.
-DEBUG = True
+DEBUG = False
 
 # This can be blank if debug is True else it should contain the names of the
 # appropriate servers.
