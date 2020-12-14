@@ -16,7 +16,7 @@ from . import local_settings
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'base/static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 print('static root', STATIC_ROOT)
 
 STATIC_URL = '/static/'
@@ -169,5 +169,5 @@ SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE')
 
 # DEMO_USER_USERNAME = local_settings.DEMO_USER_USERNAME
 # DEMO_USER_PASSWORD = local_settings.DEMO_USER_PASSWORD
-DEMO_USER_USERNAME = os.environ.get('DEMO_USER_USERNAME')
-DEMO_USER_PASSWORD = os.environ.get('DEMO_USER_PASSWORD')
+# DEMO_USER_USERNAME = os.environ.get('DEMO_USER_USERNAME') # TODO: not sure this will remove the demo user.
+# DEMO_USER_PASSWORD = os.environ.get('DEMO_USER_PASSWORD')
