@@ -16,10 +16,10 @@ from . import local_settings
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-print('static root', STATIC_ROOT)
 
-STATIC_URL = '/static/'
+
+
+
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static'),
 # )
@@ -65,6 +65,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -144,7 +145,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-
+print('static root', STATIC_ROOT)
 
 # Login and logout redirects
 
@@ -171,3 +172,5 @@ SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE')
 # DEMO_USER_PASSWORD = local_settings.DEMO_USER_PASSWORD
 # DEMO_USER_USERNAME = os.environ.get('DEMO_USER_USERNAME') # TODO: not sure this will remove the demo user.
 # DEMO_USER_PASSWORD = os.environ.get('DEMO_USER_PASSWORD')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
